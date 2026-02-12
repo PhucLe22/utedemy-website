@@ -46,7 +46,7 @@ public class LoginController extends HttpServlet {
 					}
 	            }
 	        }
-	        resp.sendRedirect("/utedemyProject/views/user/loginpage.jsp");
+	        resp.sendRedirect(req.getContextPath() + "/views/user/loginpage.jsp");
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public class LoginController extends HttpServlet {
         
         if (input.isEmpty() || password.isEmpty()) {
         	session.setAttribute("alert", "Email/số điện thoại hoặc mật khẩu chưa nhập");
-        	resp.sendRedirect("/utedemyProject/views/user/loginpage.jsp");
+        	resp.sendRedirect(req.getContextPath() + "/views/user/loginpage.jsp");
         	return;
         }
         
@@ -88,7 +88,7 @@ public class LoginController extends HttpServlet {
 
         if (!isEmail && !isPhone) {
         	session.setAttribute("alert", "Email/số điện thoại sai định dạng");
-            resp.sendRedirect("/utedemyProject/views/user/loginpage.jsp");
+            resp.sendRedirect(req.getContextPath() + "/views/user/loginpage.jsp");
             return;
         }
         

@@ -6,13 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/utedemyProject/views/Css/addCourse.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/views/Css/addCourse.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body>
+<script>window.contextPath = '${pageContext.request.contextPath}';</script>
 	<div class="header">
 		<div class="header-left">
-			<a href="/utedemyProject/teacher/course" class="back-button">&#9664;</a>
+			<a href="${pageContext.request.contextPath}/teacher/course" class="back-button">&#9664;</a>
 			<div class="header-title">Quay lại danh sách khóa học
 				&nbsp;|&nbsp; ${course.courseName}</div>
 		</div>
@@ -40,15 +41,15 @@
 	<div class="container">
 		<div class="sidebar">
 			<div class="sidebar-menu">
-				<a href="/utedemyProject/teacher/adBasicInformation"
+				<a href="${pageContext.request.contextPath}/teacher/adBasicInformation"
 					class="sidebar-item"
 					style="display: inline-block; text-decoration: none;"> <span>Thông
 						tin cơ bản</span>
 				</a>
-				<a href="/utedemyProject/teacher/addTarget" class="sidebar-item"
+				<a href="${pageContext.request.contextPath}/teacher/addTarget" class="sidebar-item"
 					style="display: inline-block; text-decoration: none;"> <span>Mục
 						tiêu khóa học</span>
-				</a>  <a href="/utedemyProject/teacher/add" class="sidebar-item"
+				</a>  <a href="${pageContext.request.contextPath}/teacher/add" class="sidebar-item"
 					style="display: inline-block; text-decoration: none;"> <span>Danh
 						sách bài học</span>
 				</a>
@@ -97,7 +98,7 @@
 		            targetAudience: targetAudience,
 		        };
 		        
-		        sendDataToServer('/utedemyProject/teacher/addTarget', targetData);
+		        sendDataToServer('${pageContext.request.contextPath}/teacher/addTarget', targetData);
 		    }
 		 	// Nếu đang ở trang thông tin cơ bản khóa học
 			if (currentPath.includes('/teacher/adBasicInformation')) {
@@ -129,7 +130,7 @@
 				formData.append("videoLink", videoLink || "");
 				formData.append("courseImage", imageFile);
 
-				sendDataToServer('/utedemyProject/teacher/adBasicInformation', formData);
+				sendDataToServer('${pageContext.request.contextPath}/teacher/adBasicInformation', formData);
 			}
 		 	
 			if (currentPath.includes('/teacher/add')) {
@@ -138,7 +139,7 @@
 				  console.log("Form data created with all fields including possible file upload");
 				  
 				  // Send FormData to server (need to modify the sendDataToServer function)
-				  sendDataToServer('/utedemyProject/teacher/add');
+				  sendDataToServer('${pageContext.request.contextPath}/teacher/add');
 			}
 			
 		}
@@ -167,7 +168,7 @@
 				                cancelButtonText: 'Về trang chủ'
 				            }).then((result) => {
 				                if (!result.isConfirmed) {
-				                    window.location.href = "/utedemyProject/teacher/course";
+				                    window.location.href = "${pageContext.request.contextPath}/teacher/course";
 				                }
 				            });
 				        } else {

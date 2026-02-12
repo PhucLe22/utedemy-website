@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập bằng OTP</title>
-    <link rel="stylesheet" href="/utedemyProject/views/Css/verifyOTP.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/Css/verifyOTP.css">
 </head>
 <body>
     <div class="otp-container">
         <h1 class="otp-header">Đăng nhập bằng OTP</h1>
         <p class="otp-instructions">Nhập OTP được cung cấp trong thư điện tử gửi cho ${email}.</p>
         
-        <form id="otpForm" action="/utedemyProject/user/verifyOTP" method="post">
+        <form id="otpForm" action="${pageContext.request.contextPath}/user/verifyOTP" method="post">
         	<input type="hidden" name="email" value="${email}">
 			<div class="otp-input-group">
 				<input class="otp-input" name="otp1" type="text" maxlength="1" oninput="onlyNumbersAndMove(this)" onkeydown="handleKeyDown(event, this)">
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-	<script src="/utedemyProject/views/Script/verifyOTP.js"></script>
+	<script src="${pageContext.request.contextPath}/views/Script/verifyOTP.js"></script>
     <script>
     	document.addEventListener('DOMContentLoaded', function() {
     	  const email = "${email}";

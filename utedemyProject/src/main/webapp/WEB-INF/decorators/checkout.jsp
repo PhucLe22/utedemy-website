@@ -6,7 +6,7 @@
    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unica - Thanh Toán</title>
-    <link rel="stylesheet" href="/utedemyProject/views/Css/checkout.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/Css/checkout.css">
     <style>
         /* Thêm CSS cho hiển thị loại giảm giá */
         .discount-type {
@@ -78,9 +78,10 @@
     </style>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="/utedemyProject/views/Css/homepage.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/Css/homepage.css">
 </head>
 <body>
+<script>window.contextPath = '${pageContext.request.contextPath}';</script>
 	    <%@ include file="/commons/user/header.jsp"%>
 	    <div class="main">
 			<!-- Begin content -->

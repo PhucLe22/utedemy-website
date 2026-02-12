@@ -58,6 +58,51 @@ public class CourseDao implements ICourseDao {
 
 
 	@Override
+	public List<Object[]> findLatestCourseDetails(int limit) {
+	    EntityManager em = JPAConfig.getEntityManager();
+	    try {
+	        String jpql = "SELECT c.courseName, t.fullname, AVG(CAST(r.rate AS double)), c.coursePrice, cd.courseImage, c.id "
+	                + "FROM Course c "
+	                + "JOIN c.teacher t "
+	                + "LEFT JOIN c.review r "
+	                + "JOIN c.courseDetail cd "
+	                + "GROUP BY c.id, c.courseName, t.fullname, c.coursePrice, cd.courseImage "
+	                + "ORDER BY c.id DESC";
+	        TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
+	        query.setMaxResults(limit);
+	        return query.getResultList();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return new ArrayList<>();
+	    } finally {
+	        em.close();
+	    }
+	}
+
+	@Override
+	public List<Object[]> findLatestCourseDetailsWithDiscount(int limit) {
+	    EntityManager em = JPAConfig.getEntityManager();
+	    try {
+	        // Trả về 7 cột giống format todaySaleCourses: name, teacher, rating, price, image, percentage(0), id
+	        String jpql = "SELECT c.courseName, t.fullname, AVG(CAST(r.rate AS double)), c.coursePrice, cd.courseImage, 0, c.id "
+	                + "FROM Course c "
+	                + "JOIN c.teacher t "
+	                + "LEFT JOIN c.review r "
+	                + "JOIN c.courseDetail cd "
+	                + "GROUP BY c.id, c.courseName, t.fullname, c.coursePrice, cd.courseImage "
+	                + "ORDER BY c.id DESC";
+	        TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
+	        query.setMaxResults(limit);
+	        return query.getResultList();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return new ArrayList<>();
+	    } finally {
+	        em.close();
+	    }
+	}
+
+	@Override
 	public List<CourseType> listCourseType() {
 		EntityManager em = JPAConfig.getEntityManager();
 	    EntityTransaction trans = em.getTransaction();

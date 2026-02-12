@@ -1,845 +1,587 @@
 @charset "UTF-8";
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        
-        .header {
-            background-color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo img {
-            height: 30px;
-        }
-        
-        .category-menu {
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-            margin-left: 15px;
-        }
-        
-        .category-menu .icon {
-            margin-right: 5px;
-            color: #0078d4;
-        }
-        
-        .search-bar {
-            flex: 1;
-            margin: 0 20px;
-            position: relative;
-            max-width: 600px;
-        }
-        
-        .search-bar input {
-            width: 100%;
-            padding: 10px 15px;
-            border-radius: 20px;
-            border: 1px solid #ddd;
-            font-size: 14px;
-            padding-right: 40px;
-        }
-        
-        .search-icon {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #777;
-        }
-        
-        .user-actions {
-            display: flex;
-            align-items: center;
-        }
-        
-        .user-menu-item {
-            margin-left: 20px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        
-        .login-button {
-            background-color: #1a73e8;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 4px;
-            font-weight: bold;
-            margin-left: 15px;
-            cursor: pointer;
-        }
-        
-        .breadcrumb {
-            background-color: #003857;
-            color: white;
-            padding: 15px 10%;
-            font-size: 14px;
-        }
-        
-        .breadcrumb a {
-            color: white;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-        
-        .breadcrumb .separator {
-            margin: 0 5px;
-        }
-        
-        .course-banner {
-            background-color: #003857;
-            color: white;
-            padding: 30px 10% 50px;
-            display: grid;
-            grid-template-columns: 1fr 350px;
-            gap: 30px;
-        }
-        
-        .course-info h1 {
-            font-size: 36px;
-            margin-bottom: 15px;
-        }
-        
-        .course-description {
-            font-size: 16px;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        
-        .course-meta {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .rating {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-        }
-        
-        .rating .stars {
-            color: #ffb400;
-            margin-right: 5px;
-        }
-        
-        .instructor {
-    margin-top: 15px;
-    font-size: 20px;
-   /* Căn chỉnh văn bản sang bên phải */
-    margin-left: 250px; /* Khoảng cách bên phải, bạn có thể thay đổi số này theo yêu cầu */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-        
-        .instructor a {
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Alert banners */
+.alert-banner {
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.alert-error {
+    background-color: #fef2f2;
+    color: #dc2626;
+}
+
+.alert-warning {
+    background-color: #fffbeb;
+    color: #d97706;
+}
+
+/* Banner */
+.course-banner {
+    background-color: #1e293b;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.banner-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 40px;
+    align-items: center;
+}
+
+.banner-category {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.banner-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 12px;
+}
+
+.banner-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin-bottom: 16px;
+}
+
+.banner-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.meta-stars {
+    color: #fbbf24;
+}
+
+.meta-text {
+    color: #94a3b8;
+}
+
+.meta-divider {
+    color: #475569;
+}
+
+.banner-instructor {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+.banner-instructor a {
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+.banner-instructor a:hover {
+    text-decoration: underline;
+}
+
+.banner-video {
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+}
+
+.banner-video iframe,
+.banner-video img {
+    width: 100%;
+    height: 240px;
+    display: block;
+    object-fit: cover;
+}
+
+/* Main layout */
+.detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 24px;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.detail-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.detail-sidebar {
+    width: 340px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 80px;
+}
+
+/* Cards */
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.card-body {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555;
+}
+
+.card-body p {
+    margin-bottom: 12px;
+}
+
+.empty-text {
+    font-size: 14px;
+    color: #999;
+    padding: 16px 0;
+}
+
+/* Learning grid */
+.learning-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.learning-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.learning-check {
+    color: #1a73e8;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* Modules */
+.modules {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.module {
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.module:last-child {
+    border-bottom: none;
+}
+
+.module-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    background: #f8fafc;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.module-header:hover {
+    background: #f1f5f9;
+}
+
+.module-arrow {
+    color: #1a73e8;
+    font-size: 11px;
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.module-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.module-body {
+    background: #fff;
+}
+
+.module-body.collapsed {
+    display: none;
+}
+
+.module-body.expanded {
+    display: block;
+}
+
+.lesson-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px 10px 42px;
+    border-top: 1px solid #f1f5f9;
+    font-size: 13px;
+    color: #555;
+}
+
+.lesson-icon {
+    color: #1a73e8;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.lesson-name {
+    flex: 1;
+}
+
+/* Instructor card */
+.instructor-card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.instructor-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.instructor-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.instructor-detail {
+    flex: 1;
+}
+
+.instructor-name {
+    font-size: 18px;
+    font-weight: 700;
     color: #1a73e8;
     text-decoration: none;
-    margin-left: 5px;
+    display: block;
+    margin-bottom: 8px;
 }
-        
-        .video-preview {
-		    position: relative;
-		    width: 100%;
-		    max-width: 560px; /* Điều chỉnh kích thước tối đa */
-		    margin: 0 auto;
-		}
-		
-		.video-preview iframe {
-		    width: 100%;
-		    height: 315px; /* Giữ tỷ lệ 16:9 */
-		    border-radius: 8px; /* Bo góc (tùy chọn) */
-		    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng (tùy chọn) */
+
+a.instructor-name:hover {
+    text-decoration: underline;
 }
-        
-        .video-preview img {
-            width: 100%;
-            display: block;
-        }
-        
-        .play-button {
-		    position: absolute;
-		    top: 50%;
-		    left: 50%;
-		    transform: translate(-50%, -50%);
-		    width: 50px;
-		    height: 50px;
-		    background: rgba(0, 0, 0, 0.5);
-		    border-radius: 50%;
-		    cursor: pointer;
-		}
-        .play-button::before {
-		    content: '▶';
-		    position: absolute;
-		    top: 50%;
-		    left: 55%;
-		    transform: translate(-50%, -50%);
-		    color: white;
-		    font-size: 20px;
-		}
-        .play-button::after {
-            content: "";
-            border-left: 20px solid #1a73e8;
-            border-top: 12px solid transparent;
-            border-bottom: 12px solid transparent;
-            margin-left: 5px;
-        }
-        
-        /* Updated layout for main content and sidebar */
-        .main-content-container {
-            display: flex;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-        }
-        
-        .main-content {
-            flex: 1;
-            margin-right: 30px;
-        }
-        
-        .sticky-sidebar {
-            width: 350px;
-            position: sticky;
-            top: 80px;
-            height: fit-content;
-            align-self: flex-start;
-        }
-        
-        .price-info {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        
-        .current-price {
-            font-size: 24px;
-            font-weight: bold;
-            display: flex;
-            align-items: left;
-            margin-bottom: 15px;
-         	margin-left: -190px;
-        }
-        
-        .original-price {
-            font-size: 16px;
-            text-decoration: line-through;
-            color: #777;
-            margin-left: 10px;
-        }
-        .new-current-price {
-    font-size: 24px; /* Tăng kích thước chữ cho giá hiện tại */
-    font-weight: bold; /* Nếu bạn muốn chữ đậm */
-    color: #333; /* Thêm màu cho giá */
+
+.instructor-meta-item {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 4px;
 }
-        .discount {
-            margin-left: auto;
-            background-color: #f0f8ff;
-            color: #1a73e8;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        
-        .action-buttons {
-            margin-top: 15px;
-        }
-        
-        .primary-button {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            text-align: center;
-            background-color: #f44336;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        
-        .secondary-button {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            text-align: center;
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .wishlist-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 40px;
-            height: 40px;
-            border: 1px solid #1a73e8;
-            border-radius: 4px;
-            background-color: white;
-            color: #1a73e8;
-            font-size: 22px;
-            cursor: pointer;
-            margin-left: auto;
-            margin-top: 10px;
-        }
-        
-        .course-features {
-            margin-top: 20px;
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .feature-icon {
-            margin-right: 10px;
-            color: #1a73e8;
-        }
-        
-        .coupon-form {
-            display: flex;
-            margin-top: 15px;
-        }
-        
-        .coupon-input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px 0 0 4px;
-            font-size: 14px;
-        }
-        
-        .coupon-button {
-            padding: 10px 15px;
-            background-color: #f0f0f0;
-            border: 1px solid #ddd;
-            border-left: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-        }
-        
-        .enterprise-button {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            text-align: center;
-            background-color: white;
-            color: #333;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-            margin-top: 15px;
-            cursor: pointer;
-        }
-        
-        .subscription-note {
-            font-size: 12px;
-            color: #666;
-            margin-top: 15px;
-            text-align: center;
-        }
-        
-        /* Learning section and other content */
-        .content-section {
-            background-color: white;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .section-title {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        .learning-points {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-        
-        .learning-point {
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .check-icon {
-            color: #1a73e8;
-            margin-right: 10px;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-        
-        .learning-point-text {
-            font-size: 14px;
-            line-height: 1.5;
-        }
-        
-        .description-content {
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        
-        .description-content p {
-            margin-bottom: 15px;
-        }
-        
-        /* Course modules styling */
-        .course-modules {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        .module {
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .module:last-child {
-            border-bottom: none;
-        }
-        
-        .module-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background-color: #f5f5f5;
-            cursor: pointer;
-        }
-        
-        .module-title {
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-        }
-        
-        
-        
-        .module-info {
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .module-content {
-            background-color: white;
-            display: none; 
-        }
-       
-        .module-content.expanded {
-		    display: block;
-		}
-		.module-content.collapsed {
-		    display: none; /* Ẩn nội dung khi thu gọn */
-		}
-		.module-header .dropdown-icon {
-		    margin-right: 10px;
-		    color: #1a73e8;
-		    cursor: pointer;
-		}
-		
-		/* Biểu tượng mũi tên xuống khi thu gọn */
-		.module-header .dropdown-icon::before {
-		    content: "▼";
-		    font-size: 12px;
-		    display: inline-block;
-		    text-align: center;
-		}
-		
-		/* Biểu tượng mũi tên lên khi mở rộng */
-		.module-header.expanded .dropdown-icon::before {
-		    content: "▲";
-}
-		
-		.dropdown-icon {
-		    margin-right: 10px;
-		    color: #1a73e8;
-		    display: inline-block;
-		    width: 12px;
-		    text-align: center;
-		}
-		
-		.dropdown-icon::before {
-		    content: "▼";
-		    font-size: 12px;
-		}
-		
-		
-				
-        .lesson {
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .lesson:last-child {
-            border-bottom: none;
-        }
-        
-        .lesson-icon {
-            color: #1a73e8;
-            margin-right: 10px;
-        }
-        
-        .lesson-title {
-            flex: 1;
-            font-size: 14px;
-        }
-        
-        .lesson-duration {
-            font-size: 14px;
-            color: #666;
-        }
-        
-        
-        .main-content {
-		    flex: 1;
-		    margin-right: 30px;
-		}
-		
-		.sticky-sidebar {
-		    width: 350px;
-		    position: sticky;
-		    top: 80px;
-		    height: fit-content;
-		    align-self: flex-start;
-		}
-		
-		/* Các phần mới thêm vào */
-		.tags {
-		    display: flex;
-		    align-items: center;
-		    margin-top: 15px;
-		}
-		
-		.tag-label {
-		    font-weight: bold;
-		    margin-right: 10px;
-		}
-		
-		.tag {
-		    background-color: #f0f0f0;
-		    padding: 5px 10px;
-		    border-radius: 4px;
-		    font-size: 14px;
-		    margin-right: 10px;
-		}
-		
-		.related-courses {
-		    margin-top: 20px;
-		}
-		
-		.related-course {
-		    display: flex;
-		    margin-bottom: 20px;
-		    background-color: white;
-		    border-radius: 8px;
-		    padding: 15px;
-		    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-		}
-		
-		.related-course .course-thumbnail img {
-		    width: 100%;
-		    border-radius: 8px;
-		}
-		
-		.instructor-profile {
-		    background-color: white;
-		    padding: 20px;
-		    border-radius: 8px;
-		    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-		    margin-top: 20px;
-		}
-		
-		.instructor-avatar img {
-		    width: 100px;
-		    height: 100px;
-		    border-radius: 50%;
-		}
-		
-		.instructor-name {
-		    font-size: 24px;
-		    margin-top: 10px;
-		}
-		
-		.instructor-meta .meta-item {
-		    margin-bottom: 10px;
-		}
-		
-		.instructor-bio {
-		    background-color: #f9f9f9;
-		    padding: 10px;
-		    border-radius: 4px;
-		    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-		    font-family: Arial, sans-serif;
-		}
-		
-		.instructor-experience li {
-		    font-size: 14px;
-		    margin-bottom: 8px;
-		    color: #555;
-		}
-		/* Giảng viên Section */
-		.instructor-profile {
-		    background-color: white;
-		    padding: 20px;
-		    border-radius: 8px;
-		    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-		    margin-top: 20px;
-		}
-		
-		.instructor-header {
-		    display: flex;
-		    align-items: center;
-		    margin-bottom: 20px;
-		}
-		
-		.instructor-avatar {
-		    width: 100px;
-		    height: 100px;
-		    border-radius: 50%;
-		    overflow: hidden;
-		    margin-right: 20px;
-		}
-		
-		.instructor-avatar img {
-		    width: 100%;
-		    height: 100%;
-		    object-fit: cover;
-		}
-		
-		.instructor-info {
-		    flex: 1;
-		}
-		
-		.instructor-name {
-		    font-size: 24px;
-		    font-weight: bold;
-		    margin-bottom: 10px;
-		}
-		
-		.instructor-meta {
-		    display: flex;
-		    flex-direction: column;
-		}
-		
-		.meta-item {
-		    margin-bottom: 8px;
-		    font-size: 14px;
-		    color: #666;
-		}
-		
-		.meta-item .icon {
-		    margin-right: 5px;
-		}
-		
-		.instructor-bio {
-		    margin-top: 20px;
-		}
-		
-		.instructor-bio p {
-		    font-size: 12px;
-		    margin: 10px 0;
-		    color: #333;
-		}
-		.teacher-name {
-		    font-size: 18px;
-		    font-weight: bold;
-		    color: #007bff;
-		}
-		.instructor-bio i {
-		    color: #007bff;
-		    margin-right: 8px;
-		    font-size: 14px;
-		}
-		.instructor-bio a {
-		    color: #007bff;
-		    text-decoration: none;
-		    font-weight: bold;
-		}
-			.instructor-bio a:hover {
-		    text-decoration: underline;
-		}	
-		
-		.instructor-bio p i {
-		    color: #007bff;
-		}
-		.instructor-bio .fas {
-		    font-size: 20px; /* Adjust icon size */
-		    vertical-align: middle;
-		}
-		.instructor-experience {
-		    list-style: none;
-		    padding: 0;
-		}
-		
-		.instructor-experience li {
-		    font-size: 14px;
-		    color: #555;
-		    margin-bottom: 10px;
-		}
-		
-		
-		.reviews-container {
-		    margin-top: 30px;
-		}
-		
-		.review {
-		    background-color: white;
-		    padding: 15px;
-		    margin-bottom: 15px;
-		    border-radius: 8px;
-		    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-		}
-		
-		.review-header {
-		    display: flex;
-		    justify-content: space-between;
-		    margin-bottom: 10px;
-		}
-		
-		.reviewer-name {
-		    font-weight: bold;
-		    font-size: 16px;
-		    color: #333;
-		}
-		
-		.review-date {
-		    font-size: 12px;
-		    color: #777;
-		}
-		
-		.review-rating {
-		    margin-bottom: 10px;
-		}
-		
-		.stars {
-		    color: #ffb400;
-		    margin-right: 5px;
-		}
-		
-		.rating-number {
-		    font-weight: bold;
-		    color: #333;
-		}
-		
-		.review-comment {
-		    font-size: 14px;
-		    color: #555;
-		    line-height: 1.6;
-		}
-		
-		
-		.review:hover {
-		    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-		    transition: all 0.3s ease;
-		}
-		.wishlist-button {
-    cursor: pointer;
+
+.instructor-meta-item i {
+    color: #1a73e8;
+    margin-right: 6px;
+    width: 16px;
     text-align: center;
-    margin: 10px 0;
-    font-size: 24px;
 }
 
-.wishlist-button .heart-icon {
-    color: gray; /* Mặc định là trắng/xám */
-    transition: color 0.3s;
+.instructor-bio-text {
+    font-size: 13px;
+    color: #555;
+    margin-top: 8px;
+    line-height: 1.5;
 }
 
-.wishlist-button .heart-icon.red {
-    color: red; /* Khi đã thích */
+.instructor-social {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #1a73e8;
+    text-decoration: none;
 }
 
-#notification {
-    transition: opacity 0.5s;
+.instructor-social:hover {
+    text-decoration: underline;
 }
-/* CSS cho popup tùy chỉnh */
+
+.instructor-social i {
+    margin-right: 4px;
+}
+
+/* Reviews */
+.review-item {
+    padding: 16px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.review-author {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+}
+
+.review-date {
+    font-size: 12px;
+    color: #999;
+}
+
+.review-stars {
+    color: #fbbf24;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.review-rate {
+    color: #333;
+    font-weight: 600;
+    margin-left: 6px;
+}
+
+.review-text {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Sidebar */
+.sidebar-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.sidebar-price {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.price-current {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.price-original {
+    font-size: 16px;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.sidebar-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #1a73e8;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #1557b0;
+}
+
+.btn-outline {
+    background-color: #fff;
+    color: #1a73e8;
+    border: 2px solid #1a73e8;
+}
+
+.btn-outline:hover {
+    background-color: #eff6ff;
+}
+
+.btn-wishlist {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-bottom: 16px;
+}
+
+.btn-wishlist:hover {
+    border-color: #f87171;
+    background: #fff1f2;
+}
+
+.sidebar-features {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 16px;
+}
+
+.feature-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Popup */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    display: none;
+}
+
 .popup {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     z-index: 1000;
     display: none;
     text-align: center;
-    max-width: 300px;
-    width: 100%;
+    max-width: 340px;
+    width: 90%;
 }
 
 .popup.success {
-    border: 2px solid #28a745;
+    border-top: 4px solid #22c55e;
 }
 
 .popup.error {
-    border: 2px solid #dc3545;
+    border-top: 4px solid #ef4444;
 }
 
 .popup-message {
-    font-size: 16px;
-    margin-bottom: 15px;
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 16px;
+    line-height: 1.5;
 }
 
 .popup-close {
-    background-color: #007bff;
-    color: white;
+    background: #1a73e8;
+    color: #fff;
     border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 8px 24px;
+    border-radius: 6px;
+    font-size: 14px;
     cursor: pointer;
 }
 
 .popup-close:hover {
-    background-color: #0056b3;
+    background: #1557b0;
 }
 
-/* Lớp overlay để làm mờ background */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    display: none;
+/* Responsive */
+@media (max-width: 900px) {
+    .banner-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .banner-video {
+        max-width: 480px;
+    }
+
+    .detail-container {
+        flex-direction: column;
+    }
+
+    .detail-sidebar {
+        width: 100%;
+        position: static;
+    }
+}
+
+@media (max-width: 600px) {
+    .banner-title {
+        font-size: 24px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .instructor-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 }

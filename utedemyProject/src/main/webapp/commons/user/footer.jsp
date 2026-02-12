@@ -25,5 +25,26 @@
                     </ul>
                 </nav>
             </div>
+            <div class="footer-section">
+                <h4>Hỗ trợ</h4>
+                <nav>
+                    <ul>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Điều khoản dịch vụ</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-section">
+                <h4>Kết nối</h4>
+                <nav>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> Youtube</a></li>
+                        <li><a href="#"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </footer>

@@ -269,8 +269,9 @@ public class OrderController extends HttpServlet {
         float totalAmount = Float.parseFloat(totalAmountStr);
         
         //mình phải xử lí paypal ở đây, truyền total amount, sau khi hoàn tất thì mới chạy code ở dước
-         String approveLink = PayPalService.createPayment(convertVNDToUSD(totalAmount), "USD", "http://localhost:8082/utedemyProject/user/orderpaypal/success",
-	            "http://localhost:8082/utedemyProject/user/orderpaypal/cancel");
+         String baseUrl = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + req.getContextPath();
+         String approveLink = PayPalService.createPayment(convertVNDToUSD(totalAmount), "USD", baseUrl + "/user/orderpaypal/success",
+	            baseUrl + "/user/orderpaypal/cancel");
          if (approveLink != null) {
  	        resp.sendRedirect(approveLink);
  	        return;

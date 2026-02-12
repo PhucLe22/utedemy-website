@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" buffer="64kb"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" scope="request" />
 
-<link rel="stylesheet" href="/utedemyProject/views/Css/homepage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/views/Css/homepage.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <!DOCTYPE html>
 <html lang="vi">
@@ -80,12 +80,9 @@
             <div class="hero-content">
                 <h2 id="recruitment-title">Trở thành Giảng viên Unica</h2>
                 <p>Giúp mọi người trở nên tốt hơn - bao gồm cả chính bạn</p>
-                    <form action="${pageContext.request.contextPath}/user/homeRegisterTeacher" method="get" style="display:inline;">
-				    <button type="submit" class="btn btn-register" aria-label="Register as Instructor">Đăng ký ngay</button>
-				</form>
-            </div>
-            <div class="hero-image">
-                <img src="/api/placeholder/500/400" alt="Instructor Illustration">
+                <form action="${pageContext.request.contextPath}/user/homeRegisterTeacher" method="get" style="display:inline;">
+                    <button type="submit" class="btn btn-register" aria-label="Register as Instructor">Đăng ký ngay</button>
+                </form>
             </div>
         </section>
     </main>
@@ -192,14 +189,19 @@
 
       const bannerSlides = [
           {
-              title: 'Khóa Học Mới',
+              title: 'Khóa Học Mới Nhất',
               subtitle: 'Ưu đãi giảm 50% tất cả các khóa học',
-              image: '/api/placeholder/1200/400'
+              gradient: 'linear-gradient(135deg, #0f2027, #203a43, #2c5364)'
           },
           {
               title: 'Học Trực Tuyến',
               subtitle: 'Học mọi lúc, mọi nơi với Unica',
-              image: '/api/placeholder/1200/400'
+              gradient: 'linear-gradient(135deg, #141e30, #243b55)'
+          },
+          {
+              title: 'Giảng Viên Hàng Đầu',
+              subtitle: 'Được đào tạo bởi các chuyên gia trong ngành',
+              gradient: 'linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d)'
           }
       ];
 
@@ -207,47 +209,29 @@
           const sliderContent = document.querySelector('.slider-content');
           if (!sliderContent) return;
 
-          sliderContent.innerHTML = bannerSlides.map((slide, index) => `
-              <div class="slider-item" data-index="${index}">
-                  <img src="${slide.image}" alt="${slide.title}">
-                  <div class="slider-text">
-                      <h2>${slide.title}</h2>
-                      <p>${slide.subtitle}</p>
-                      <button class="view-course-btn">Xem khóa học</button>
-                  </div>
-              </div>
-          `).join('');
-      }
-      function renderBannerSlides() {
-          const sliderContent = document.querySelector('.slider-content');
-          if (!sliderContent) return;
-          
           sliderContent.innerHTML = '';
-          
+
           bannerSlides.forEach((slide, index) => {
               let slideItem = document.createElement('div');
               slideItem.classList.add('slider-item');
               slideItem.setAttribute('data-index', index);
-              
-              let img = document.createElement('img');
-              img.src = slide.image;
-              img.alt = slide.title;
-              
+              slideItem.style.background = slide.gradient;
+
               let textContainer = document.createElement('div');
               textContainer.classList.add('slider-text');
-              
+
               let title = document.createElement('h2');
               title.textContent = slide.title;
-              
+
               let subtitle = document.createElement('p');
               subtitle.textContent = slide.subtitle;
-              
+
               let button = document.createElement('button');
               button.classList.add('view-course-btn');
               button.textContent = 'Xem khóa học';
-              
+
               textContainer.append(title, subtitle, button);
-              slideItem.append(img, textContainer);
+              slideItem.appendChild(textContainer);
               sliderContent.appendChild(slideItem);
           });
       }
@@ -349,7 +333,7 @@
                     const courseId = e.currentTarget.getAttribute('data-course-id');
                     console.log('❤️ Yêu thích1:', courseId);
                     // AJAX request to add favorite course
-                    fetch('/utedemyProject/user/addFavoriteCourse', {
+                    fetch('${pageContext.request.contextPath}/user/addFavoriteCourse', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
@@ -457,7 +441,7 @@
                     const courseId = e.currentTarget.getAttribute('data-course-id');
                     console.log('❤️ Yêu thích1:', courseId);
                     // AJAX request to add favorite course
-                    fetch('/utedemyProject/user/addFavoriteCourse', {
+                    fetch('${pageContext.request.contextPath}/user/addFavoriteCourse', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
@@ -508,21 +492,6 @@
           });
       }
       
-      // Gọi các hàm render khi DOM được load
-      window.addEventListener('DOMContentLoaded', () => {
-          renderBannerSlides();
-          renderTodaySaleCourses();
-          renderBestsellerCourses();
-          renderTodaySaleCourses();
-          formatPrices('real-price');
-          formatPrices('product-price');
-      });    
-      
-      window.onload = function() {
-          renderBestsellerCourses();
-          renderTodaySaleCourses();
-      };
-
       function initializeSlider() {
           const sliderContent = document.querySelector('.slider-content');
           const sliderItems = document.querySelectorAll('.slider-item');
@@ -594,12 +563,11 @@
 
       // Render components
       renderBannerSlides();
-      renderTodaySaleCourses();
-      renderFeaturedInstructors();
       renderBestsellerCourses();
+      renderTodaySaleCourses();
       initializeSlider();
   });
-  let currentToast = null; 
+  let currentToast = null;
 
   function showToast(message, type = "success") {
     if (currentToast) {
@@ -609,42 +577,18 @@
 
     const toast = document.createElement("div");
     toast.innerText = message;
-    toast.style.position = "fixed";
-    toast.style.top = "50%";
-    toast.style.left = "50%";
-    toast.style.transform = "translate(-50%, -500%)";
-    toast.style.color = "white";
-    toast.style.padding = "15px 30px";
-    toast.style.borderRadius = "8px";
-    toast.style.boxShadow = "0 2px 10px rgba(0,0,0,0.3)";
-    toast.style.zIndex = "9999";
-    toast.style.fontSize = "18px";
-    toast.style.textAlign = "center";
-    toast.style.minWidth = "200px";
-
-    switch (type) {
-      case "error":
-        toast.style.background = "#f44336";
-        break;
-      case "success":
-        toast.style.background = "#4caf50";
-        break;
-      case "warning":
-        toast.style.background = "#ff9800";
-        break;
-      case "info":
-        toast.style.background = "#2196f3";
-        break;
-      default:
-        toast.style.background = "#4caf50";
-    }
-
+    toast.className = "toast-notification toast-" + type;
     document.body.appendChild(toast);
     currentToast = toast;
 
+    requestAnimationFrame(() => {
+      toast.classList.add("show");
+    });
+
     setTimeout(() => {
       if (currentToast === toast) {
-        toast.remove();
+        toast.classList.remove("show");
+        setTimeout(() => toast.remove(), 300);
         currentToast = null;
       }
     }, 3000);

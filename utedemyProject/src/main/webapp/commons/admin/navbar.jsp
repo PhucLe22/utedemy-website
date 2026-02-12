@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c"%>
-<link rel="stylesheet" href="/utedemyProject/views/Css/header.css">            
+<link rel="stylesheet" href="${pageContext.request.contextPath}/views/Css/header.css">            
 <div style="background-color: #003580; height: 50px; display: flex; align-items: center; padding: 0 20px; justify-content: space-between;">   
         <!-- Booking.com Text -->
         <div style="color: white; font-size: 18px; font-weight: bold;">
@@ -34,7 +34,7 @@
 							id="avatarDropdown">
 
 						<div class="dropdown-content" id="userDropdown">
-						<a href="/utedemyProject/logout">Đăng xuất</a>
+						<a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
 						</div>
 					</div>
 				</div>

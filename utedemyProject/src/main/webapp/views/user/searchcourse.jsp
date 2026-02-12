@@ -71,7 +71,7 @@
 						<div>
 				<h3 id="courseName"  
     style="font-size: 16px; font-weight: bold; margin-bottom: 5px; color: #333; cursor: pointer;"
-    onclick="window.location.href='/utedemyProject/course/courseDetail?courseId=${i.id}'">
+    onclick="window.location.href='${pageContext.request.contextPath}/course/courseDetail?courseId=${i.id}'">
     ${i.courseName}
 </h3>
 

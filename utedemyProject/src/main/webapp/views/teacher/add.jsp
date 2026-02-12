@@ -106,6 +106,6 @@
 	  </div>
 	</div>
     
-    <script src="/utedemyProject/views/Script/addCourse.js"></script>
+    <script src="${pageContext.request.contextPath}/views/Script/addCourse.js"></script>
 </body>
 </html>

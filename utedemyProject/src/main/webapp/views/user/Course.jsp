@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Unica - Học online mọi kỹ nằng từ chuyện gia hàng đầu</title>
-    <link rel="stylesheet" href="/utedemyProject/views/Css/Course.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/Css/Course.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="/utedemyProject/views/Script/Course.js"></script>
+    <script src="${pageContext.request.contextPath}/views/Script/Course.js"></script>
 <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
 </head>
 
 <header class="header-bar">
     <div class="logo-area">
-        <a href="/utedemyProject/user/homepage" class="logo-link">
+        <a href="${pageContext.request.contextPath}/user/homepage" class="logo-link">
 			<img src="https://photo.salekit.com/uploads/salekit_c196362f511b1291152d3dec9805e706/logo-unica-2.png" alt="Unica Logo" class="logo-circle" id="logoImg">
 		</a>
         <span class="header-title">Tổng quan về thuế</span>

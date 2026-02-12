@@ -9,10 +9,10 @@
 <body>
     <div class="content">
 	    <div class="breadcrumb">
-	        <a href="/utedemyProject/teacher/homePage" style="display: inline-block; text-decoration: none;">Bài giảng</a> > Thêm khóa học mới
+	        <a href="${pageContext.request.contextPath}/teacher/homePage" style="display: inline-block; text-decoration: none;">Bài giảng</a> > Thêm khóa học mới
 	    </div>
 	    <h2 class="modal-title">Thêm khóa học mới</h2>
-	    <form id="createCourseForm" action="/utedemyProject/teacher/addCourse" method="post">
+	    <form id="createCourseForm" action="${pageContext.request.contextPath}/teacher/addCourse" method="post">
 	        <div class="form-group">
 	            <label class="form-label">Tên khóa học *</label>
 	            <p class="form-hint">Đừng lo nếu bạn không nghĩ ra một tên ngay bây giờ. Bạn có thể thay đổi sau</p>

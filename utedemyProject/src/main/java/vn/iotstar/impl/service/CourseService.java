@@ -40,6 +40,16 @@ public class CourseService implements ICourseService {
     public List<Object[]> getTodaySaleCourses(int limit) {
         return courseDao.findTodaySaleCourses(limit);
     }
+
+    @Override
+    public List<Object[]> getLatestCourses(int limit) {
+        return courseDao.findLatestCourseDetails(limit);
+    }
+
+    @Override
+    public List<Object[]> getLatestCoursesWithDiscount(int limit) {
+        return courseDao.findLatestCourseDetailsWithDiscount(limit);
+    }
 	
 	@Override
 	public List<CourseType> listCourseType() {

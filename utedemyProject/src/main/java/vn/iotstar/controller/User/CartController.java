@@ -96,7 +96,7 @@ public class CartController extends HttpServlet{
 		            if (action.equals("deleteAll")) {
 		                boolean bool = cart_service.removeAllCoursesByUserId(u.getId());
 		                System.out.println("Test"+bool);
-		                resp.sendRedirect("/utedemyProject/user/cart");
+		                resp.sendRedirect(req.getContextPath() + "/user/cart");
 		            	return;
 		            }
 		            if ("deleteSelected".equals(action)) {

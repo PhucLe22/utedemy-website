@@ -953,6 +953,7 @@
 	<script src="/do_An/Content/js/sweetalert2.min.js"></script>
 </head>
 <body>
+<script>window.contextPath = '${pageContext.request.contextPath}';</script>
 	<%@ include file="/commons/user/header.jsp"%>
 	<header class="header">
         <div class="instructor-info">
@@ -996,7 +997,7 @@
 //Hàm xử lý nút "VÀO HỌC NGAY"
 function goToLearn(courseId) {
     // Chuyển hướng đến Course.jsp và truyền courseId & userId
-    window.location.href = '/utedemyProject/views/user/Course?courseId=' + courseId;
+    window.location.href = '${pageContext.request.contextPath}/views/user/Course?courseId=' + courseId;
     
 }
 </script>
@@ -1068,7 +1069,7 @@ function goToLearn(courseId) {
      // Xác nhận xóa khóa học
         function confirmDelete(courseId) {
             if (confirm('Bạn có chắc chắn muốn xóa khóa học này?')) {
-                window.location.href = `/utedemyProject/teacher/deleteCourse?id=${courseId}`;
+                window.location.href = `${pageContext.request.contextPath}/teacher/deleteCourse?id=${courseId}`;
             }
         }
         

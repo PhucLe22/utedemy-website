@@ -41,18 +41,18 @@ public class PayPalCallbackController extends HttpServlet{
 	               boolean isSucess = order_service.updateOrderStatus(order.getId(),"COMPLETED");
 					if(isSucess==true) {
 					session.setAttribute("order_state", "success");
-				    resp.sendRedirect("/utedemyProject/user/viewcheckout");
+				    resp.sendRedirect(req.getContextPath() + "/user/viewcheckout");
 					}
 
 	            }
 	            else {
 	                session.setAttribute("order_state", "fail");
-	                resp.sendRedirect("/utedemyProject/user/viewcheckout");
+	                resp.sendRedirect(req.getContextPath() + "/user/viewcheckout");
 	            }
 	        } else if (path.contains("cancel")) {
 	        
 	            session.setAttribute("order_state", "cancel");
-                resp.sendRedirect("/utedemyProject/user/viewcheckout");
+                resp.sendRedirect(req.getContextPath() + "/user/viewcheckout");
 	        }
 	    }
 	}

@@ -26,6 +26,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 import vn.iotstar.entity.Answer;
 import vn.iotstar.entity.Course;
+import vn.iotstar.entity.User;
 import vn.iotstar.entity.CourseDetail;
 import vn.iotstar.entity.CourseType;
 import vn.iotstar.entity.Lesson;
@@ -117,9 +118,18 @@ public class UpdateCourseController extends HttpServlet{
 		        resp.getWriter().write("{\"error\":\"Quiz not found\"}");
 		    }
 		}
-		else if (url.contains("/teacher/editBasicInformation")) 
+		else if (url.contains("/teacher/editBasicInformation"))
 		{
+			User user = (User) session.getAttribute("account");
+			if (user == null) {
+				resp.sendRedirect(req.getContextPath() + "/login");
+				return;
+			}
 			String idCourseStr = req.getParameter("id");
+			if (idCourseStr == null || idCourseStr.isEmpty()) {
+				resp.sendRedirect(req.getContextPath() + "/teacher/course");
+				return;
+			}
 			int idCourse = Integer.parseInt(idCourseStr);
 			Course course = courseService.findByIdCourse(idCourse);
 			session.setAttribute("courseSession1", course);

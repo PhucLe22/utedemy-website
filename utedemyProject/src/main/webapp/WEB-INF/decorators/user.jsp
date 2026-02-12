@@ -10,17 +10,18 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="/utedemyProject/views/Css/homepage.css">
-    <script src="/utedemyProject/views/Script/homepage.js"></script>  
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/Css/homepage.css">
+    <script src="${pageContext.request.contextPath}/views/Script/homepage.js"></script>  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/utedemyProject/views/Css/teacherRegister.css">
-    	<link rel="stylesheet" href="/utedemyProject/views/Css/searchcourse.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/Css/teacherRegister.css">
+    	<link rel="stylesheet" href="${pageContext.request.contextPath}/views/Css/searchcourse.css">
 	<link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-	<script src="/utedemyProject/views/Script/searchcourse.js"></script>
+	<script src="${pageContext.request.contextPath}/views/Script/searchcourse.js"></script>
 </head>
 <body>
+<script>window.contextPath = '${pageContext.request.contextPath}';</script>
 	    <%@ include file="/commons/user/header.jsp"%>
 	    <div class="main">
 			<!-- Begin content -->

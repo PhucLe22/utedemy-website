@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/utedemyProject/views/Css/searchcourse.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/views/Css/searchcourse.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-<script src="/utedemyProject/views/Script/searchcourse.js"></script>
+<script src="${pageContext.request.contextPath}/views/Script/searchcourse.js"></script>
 
 
 <title>Unica - Kết quả tìm kiếm</title>

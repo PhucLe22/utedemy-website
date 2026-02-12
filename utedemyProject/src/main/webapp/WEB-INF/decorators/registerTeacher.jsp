@@ -381,10 +381,11 @@
     margin-left: 2px;
 }
     </style>
-    <link rel="stylesheet" href="/utedemyProject/views/Css/contract.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/Css/contract.css">
 
 </head>
 <body>
+<script>window.contextPath = '${pageContext.request.contextPath}';</script>
 
 	<%@ include file="/commons/user/header.jsp"%>
 	<header class="header">

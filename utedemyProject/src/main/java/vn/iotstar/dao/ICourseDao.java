@@ -41,6 +41,10 @@ public interface ICourseDao {
 	List<Object[]> findBestSellingCourseDetails(int limit);
 
 	List<Object[]> findTodaySaleCourses(int limit);
+
+	List<Object[]> findLatestCourseDetails(int limit);
+
+	List<Object[]> findLatestCourseDetailsWithDiscount(int limit);
 	
 	public boolean updateCourseDetail (CourseDetail courseDetail);
 

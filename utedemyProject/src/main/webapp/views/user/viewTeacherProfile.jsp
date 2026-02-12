@@ -87,7 +87,7 @@
                          
                                 <h3 id="courseName"  
     style="font-size: 18px; font-weight: bold; margin-bottom: 10px;"
-    onclick="window.location.href='/utedemyProject/course/courseDetail?courseId=${course.id}'">
+    onclick="window.location.href='${pageContext.request.contextPath}/course/courseDetail?courseId=${course.id}'">
     ${course.courseName}
 </h3>
                                 

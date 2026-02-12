@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			      }
 			
 			      // Gửi request cập nhật nếu cần
-			      fetch('/utedemyProject/teacher/updateSection', {
+			      fetch(window.contextPath + '/teacher/updateSection', {
 			        method: 'POST',
 			        headers: {
 			          'Content-Type': 'application/x-www-form-urlencoded'
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			      });
 			    } else {
 			      // Tạo mới nếu không trong trạng thái chỉnh sửa
-			      fetch('/utedemyProject/teacher/addSection', {
+			      fetch(window.contextPath + '/teacher/addSection', {
 			        method: 'POST',
 			        headers: {
 			          'Content-Type': 'application/x-www-form-urlencoded'
@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		    if (deleteIcon) {
 		        deleteIcon.addEventListener('click', function () {
 					const sectionId = editIcon.getAttribute('data-id');
-					fetch(`/utedemyProject/teacher/deleteSection`, {
+					fetch(`${window.contextPath}/teacher/deleteSection`, {
 		                method: 'POST',
 		                headers: {
 		                    'Content-Type': 'application/x-www-form-urlencoded'
@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					const sectionId = this.getAttribute('data-id');
 					const currentSectionElement = this.closest('.course-section'); // lấy phần đang sửa
 					
-					fetch(`/utedemyProject/teacher/editSection?sectionId=${sectionId}`)
+					fetch(`${window.contextPath}/teacher/editSection?sectionId=${sectionId}`)
 						.then(response => response.json())
 						.then(data => {
 							if (data && data.title) {
@@ -433,7 +433,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				      }
 				
 				      // Gửi request cập nhật nếu cần
-				      fetch('/utedemyProject/teacher/updateLesson', {
+				      fetch(window.contextPath + '/teacher/updateLesson', {
 				        method: 'POST',
 				        headers: {
 				          'Content-Type': 'application/x-www-form-urlencoded'
@@ -468,7 +468,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					else{
 						// Gửi dữ liệu bài học về server bằng fetch
 			            const sectionId = currentSection.getAttribute('data-section-id'); // Lấy id phần học nếu có
-			            fetch('/utedemyProject/teacher/addLesson', {
+			            fetch(window.contextPath + '/teacher/addLesson', {
 			                method: 'POST',
 			                headers: {
 			                    'Content-Type': 'application/x-www-form-urlencoded',
@@ -516,7 +516,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			                if (deleteButton) {
 			                    deleteButton.addEventListener('click', function () {
 			                        const lessonId = editButton.getAttribute('data-id');
-									fetch(`/utedemyProject/teacher/deleteLesson`, {
+									fetch(`${window.contextPath}/teacher/deleteLesson`, {
 						                method: 'POST',
 						                headers: {
 						                    'Content-Type': 'application/x-www-form-urlencoded'
@@ -543,7 +543,7 @@ document.addEventListener('DOMContentLoaded', function() {
 									const lessonId = this.getAttribute('data-id');
 									const currentLessonElement = this.closest('.lesson-item'); // lấy phần đang sửa
 									
-									fetch(`/utedemyProject/teacher/editLesson?lessonId=${lessonId}`)
+									fetch(`${window.contextPath}/teacher/editLesson?lessonId=${lessonId}`)
 										.then(response => response.json())
 										.then(data => {
 											if (data && data.description && data.title && data.videoUrl) {
@@ -673,7 +673,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				        }))
 				    };
 					
-					const url = isEditMode ? '/utedemyProject/teacher/updateQuiz' : '/utedemyProject/teacher/addQuiz';
+					const url = isEditMode ? window.contextPath + '/teacher/updateQuiz' : window.contextPath + '/teacher/addQuiz';
 					if (!isEditMode) {
 					    delete quizData.id; // Nếu thêm mới thì xoá id
 					} else {
@@ -737,7 +737,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				            if (deleteButton) {
 				                deleteButton.addEventListener('click', function() {
 				                	const quizId = newQuiz.getAttribute('data-quiz-id'); 
-									fetch(`/utedemyProject/teacher/deleteQuiz`, {
+									fetch(`${window.contextPath}/teacher/deleteQuiz`, {
 						                method: 'POST',
 						                headers: {
 						                    'Content-Type': 'application/x-www-form-urlencoded'
@@ -763,7 +763,7 @@ document.addEventListener('DOMContentLoaded', function() {
 							    editButton.addEventListener('click', function () {
 							        const quizId = newQuiz.getAttribute('data-quiz-id');
 							        if (quizId) {
-							            fetch(`/utedemyProject/teacher/editQuiz?quizId=${quizId}`)
+							            fetch(`${window.contextPath}/teacher/editQuiz?quizId=${quizId}`)
 							                .then(res => res.json())
 							                .then(data => {
 							                    // Gọi hàm điền dữ liệu vào modal

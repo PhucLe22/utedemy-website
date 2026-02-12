@@ -1,25 +1,25 @@
 package vn.iotstar.controller.User;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.util.Random;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import vn.iotstar.entity.Role;
+import vn.iotstar.entity.User;
 import vn.iotstar.impl.service.*;
 import vn.iotstar.service.*;
+import vn.iotstar.utils.AESUtil;
 
 
 @WebServlet(urlPatterns = {"/user/register"})
 public class RegisterController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	public EmailService emailService = new EmailService();
+	private IRoleService roleService = new RoleService();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,7 +28,7 @@ public class RegisterController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String path = req.getServletPath();
 		if(path.contains("register")) {
-		resp.sendRedirect("/utedemyProject/views/user/registerpage.jsp");	
+		resp.sendRedirect(req.getContextPath() + "/views/user/registerpage.jsp");	
 		}
 	}
 
@@ -62,59 +62,63 @@ public class RegisterController extends HttpServlet {
 			
 			if(service.checkPasswordAndConfirmPassword(password,confirmPassword)==false) {
 				session.setAttribute("alert", "Mật khẩu và xác nhận mật khẩu không khớp");
-				 resp.sendRedirect("/utedemyProject/user/register");
+				 resp.sendRedirect(req.getContextPath() + "/user/register");
 				    return;
 			}
 			else {
 			  if(service.checkPasswordFormat(confirmPassword)==false) {
 				 session.setAttribute("alert", "Mật khẩu không đúng định dạng");
-				 resp.sendRedirect("/utedemyProject/user/register");
+				 resp.sendRedirect(req.getContextPath() + "/user/register");
 		         return;
 		     	}
 			}
 			
 			if (service.checkFormatMail(email)==false) {
 				session.setAttribute("alert", "Email không đúng định dạng");
-			    resp.sendRedirect("/utedemyProject/user/register");
+			    resp.sendRedirect(req.getContextPath() + "/user/register");
 			    return;
 			}
 			if (!service.checkFormatPhone(phone)==false) {
 				session.setAttribute("alert", "Số điện thoại không đúng định dạng");
-			    resp.sendRedirect("/utedemyProject/user/register");
+			    resp.sendRedirect(req.getContextPath() + "/user/register");
 			    return;
 			}
 		
 			if (service.checkExistEmail(email)) {
 				session.setAttribute("alert", "Email đã được đăng kí");
-			    resp.sendRedirect("/utedemyProject/user/register");
+			    resp.sendRedirect(req.getContextPath() + "/user/register");
 			    return;
 			}
 			
 			if (service.checkExistPhoneNumber(phone)) {
 				session.setAttribute("alert", "Số điện thoại đã được đăng kí");
-				 resp.sendRedirect("/utedemyProject/user/register?error=phone_exist");
+				 resp.sendRedirect(req.getContextPath() + "/user/register?error=phone_exist");
 				 return;
 			}
-			
-			//call otp controller 
-			String otpCode = emailService.generateOTP();
-        	
-        	session.setAttribute("otp_code", otpCode);
-            session.setAttribute("email", email);  // Lưu email vào session
-            session.setAttribute("send", 1);
-            session.setAttribute("attempts", 0);
-            session.setAttribute("last_send_time", System.currentTimeMillis());
-            
-            // Thiết lập thời gian hết hạn session (ví dụ: 5 phút)
-            session.setMaxInactiveInterval(900);
-            
-        	if (emailService.sendOtp(email, otpCode)) {
-        		System.out.println("tài khoản có tồn tại, gửi mã thành công");
-        	}
-        	 
-        	req.setAttribute("email", email);
-        	req.getRequestDispatcher("/views/user/verifyOTP.jsp").forward(req, resp);
-				
+
+			// Create user directly without OTP
+			String encryptedPassword = null;
+			try {
+				encryptedPassword = AESUtil.encrypt(password);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			Role userRole = roleService.getDefaultUserRole();
+
+			User user = new User();
+			user.setAvatarUrl("default-avatar.png");
+			user.setFullname(fullname);
+			user.setEmail(email);
+			user.setPassword(encryptedPassword);
+			user.setPhoneNumber(phone);
+			user.addRole(userRole);
+			user.setIsActive(true);
+
+			service.insert(user);
+
+			session.setAttribute("account", user);
+			resp.sendRedirect(req.getContextPath() + "/user/homepage");
 		}
 		
 

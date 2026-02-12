@@ -20,7 +20,7 @@
                                 <label for="selectAll">CHỌN TẤT CẢ (<span id="item-count">${cart.courses.size()}</span> SẢN PHẨM)</label>
                             </div>
                             
-                            <form action="/utedemyProject/user/deletecart" method="post">
+                            <form action="${pageContext.request.contextPath}/user/deletecart" method="post">
                                 <input type="hidden" name="action" value="deleteAll">
                                 <button type="submit" class="delete-btn">
                                     <i class="fas fa-trash delete-icon"></i> XÓA
@@ -28,7 +28,7 @@
                             </form>
                         </div>
                         
-                        <form action="/utedemyProject/user/deletecart" method="post" id="deleteForm">
+                        <form action="${pageContext.request.contextPath}/user/deletecart" method="post" id="deleteForm">
                             <input type="hidden" name="action" value="deleteSelected">
                             
                             <!-- Danh sách khóa học trong giỏ hàng -->
@@ -122,7 +122,7 @@
                             </span>
                         </div>
                         
-                        <form action="/utedemyProject/user/viewcheckout" id="checkoutForm">
+                        <form action="${pageContext.request.contextPath}/user/viewcheckout" id="checkoutForm">
                             <div id="selectedCoursesContainer">
                                 <c:forEach var="item" items="${cart.courses}">
                                     <input type="hidden" name="selectedCourses" value="${item.id}">
@@ -142,7 +142,7 @@
                     <div class="empty-cart">
                         <p>Giỏ hàng của bạn đang trống</p>
                         <i class="fas fa-shopping-cart empty-cart-icon"></i>
-                        <a href="/utedemyProject/home" class="continue-shopping-btn">Tiếp tục mua sắm</a>
+                        <a href="${pageContext.request.contextPath}/home" class="continue-shopping-btn">Tiếp tục mua sắm</a>
                     </div>
                 </c:otherwise>
             </c:choose>
@@ -200,7 +200,7 @@
                 </c:if>
                            
             </div>
-            <!-- http://localhost:8082/utedemyProject/course/courseDetail?courseId=22 -->
+            <!-- http://localhost:8082${pageContext.request.contextPath}/course/courseDetail?courseId=22 -->
             <!--  bấm nut course.id -->
 
 
@@ -215,7 +215,7 @@
         if (id && id > 0) {
             console.log('Course ID:', id);
             // Nối chuỗi thủ công và kiểm tra
-            const redirectUrl = contextPath + "/utedemyProject/course/courseDetail?courseId=" + id;
+            const redirectUrl = contextPath + "${pageContext.request.contextPath}/course/courseDetail?courseId=" + id;
             console.log('Redirecting to:', redirectUrl);
             window.location.href = redirectUrl;
         } else {

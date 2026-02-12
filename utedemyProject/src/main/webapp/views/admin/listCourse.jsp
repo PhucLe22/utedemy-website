@@ -88,7 +88,7 @@
 						<span>&times;</span>
 					</button>
 				</div>
-				<form action="/utedemyProject/admin/cancelCourse" method="get">
+				<form action="${pageContext.request.contextPath}/admin/cancelCourse" method="get">
 					<div class="modal-body">
 						<div style="margin-bottom: 15px;">
 							<input type="hidden" id="modal-id" name="id" value="">

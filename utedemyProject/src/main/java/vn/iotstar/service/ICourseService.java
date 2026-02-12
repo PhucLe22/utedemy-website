@@ -22,6 +22,10 @@ public interface ICourseService {
 
 	List<Object[]> getTodaySaleCourses(int limit);
 
+	List<Object[]> getLatestCourses(int limit);
+
+	List<Object[]> getLatestCoursesWithDiscount(int limit);
+
 	public List<CourseType> listCourseType();
 	
 	public boolean saveCoure (Course course);

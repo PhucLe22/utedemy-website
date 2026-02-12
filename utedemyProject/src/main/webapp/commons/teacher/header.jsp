@@ -3,7 +3,7 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
-<link rel="stylesheet" href="/utedemyProject/views/Css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/views/Css/header.css">
 <header class="header-container">
 	<div class="top-bar">
 		<div class="logo-section">
@@ -83,13 +83,13 @@
 						id="avatarDropdown">
 
 					<div class="dropdown-content" id="userDropdown">
-						<a href="/utedemyProject/user/mycourse">Vào học</a> <a href="/member">Hội viên</a> <a
+						<a href="${pageContext.request.contextPath}/user/mycourse">Vào học</a> <a href="/member">Hội viên</a> <a
 							href="/activate-course">Kích hoạt khóa học</a> <c:forEach var="role" items="${sessionScope.account.roles}">
     <c:if test="${role.id == 2}">
-        <a href="/utedemyProject/teacher/course">Giảng viên</a>
+        <a href="${pageContext.request.contextPath}/teacher/course">Giảng viên</a>
     </c:if>
 </c:forEach> <a href="/profile">Cập nhật
-							hồ sơ</a> <a href="/wallet">Ví của bạn</a> <a href="/utedemyProject/logout">Đăng
+							hồ sơ</a> <a href="/wallet">Ví của bạn</a> <a href="${pageContext.request.contextPath}/logout">Đăng
 							xuất</a>
 					</div>
 				</div>
@@ -100,10 +100,10 @@
 			<!-- User is not logged in - show login and signup buttons -->
 			<a href="/cart"><i class="fas fa-shopping-cart cart-icon"></i></a>
 			<a href="/favorites"><i class="fas fa-heart heart-icon"></i></a>
-			<a href="/utedemyProject/login">
+			<a href="${pageContext.request.contextPath}/login">
 				<button class="login-btn">Đăng nhập</button>
 			</a>
-			<a href="/utedemyProject/user/register">
+			<a href="${pageContext.request.contextPath}/user/register">
 				<button class="signup-btn">Đăng ký</button>
 			</a>
 
@@ -112,4 +112,4 @@
 	</div>
 
 </header>
-<script src="/utedemyProject/views/Script/header.js"></script>
+<script src="${pageContext.request.contextPath}/views/Script/header.js"></script>

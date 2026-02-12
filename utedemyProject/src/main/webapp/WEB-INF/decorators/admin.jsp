@@ -306,6 +306,7 @@
 	<script src="/do_An/Content/js/sweetalert2.min.js"></script>
 </head>
 <body>
+<script>window.contextPath = '${pageContext.request.contextPath}';</script>
     <%@ include file="/commons/admin/navbar.jsp"%>
 	<%@ include file="/commons/admin/sidebar.jsp" %>
         

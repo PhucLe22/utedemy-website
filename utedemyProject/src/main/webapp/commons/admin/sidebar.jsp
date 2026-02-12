@@ -14,17 +14,17 @@
             
             <div class="sidebar-category">Quản lý chung</div>
             
-            <a href="/utedemyProject/admin/accountManagement" class="sidebar-item" data-path="accountManagement">
+            <a href="${pageContext.request.contextPath}/admin/accountManagement" class="sidebar-item" data-path="accountManagement">
 	            <i class="fas fa-user"></i>
 	            <span>Tài khoản</span>
 	        </a>
 	
-	        <a href="/utedemyProject/admin/courseManagement" class="sidebar-item" data-path="courseManagement">
+	        <a href="${pageContext.request.contextPath}/admin/courseManagement" class="sidebar-item" data-path="courseManagement">
 	            <i class="fas fa-graduation-cap"></i>
 	            <span>Khóa học</span>
 	        </a>
             
-            <a href="/utedemyProject/admin/category2" class="sidebar-item" data-path="category2">
+            <a href="${pageContext.request.contextPath}/admin/category2" class="sidebar-item" data-path="category2">
                 <i class="fas fa-th-list"></i>
                 <span>Danh mục</span>
             </a>

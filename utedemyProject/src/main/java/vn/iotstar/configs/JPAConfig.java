@@ -2,12 +2,18 @@ package vn.iotstar.configs;
 
 import jakarta.persistence.*;
 
-@PersistenceContext
 public class JPAConfig {
 
-	public static EntityManager getEntityManager()
-	{
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jpa-hibernate-mysql");
+	private static final EntityManagerFactory factory =
+			Persistence.createEntityManagerFactory("jpa-hibernate-mysql");
+
+	public static EntityManager getEntityManager() {
 		return factory.createEntityManager();
+	}
+
+	public static void close() {
+		if (factory != null && factory.isOpen()) {
+			factory.close();
+		}
 	}
 }

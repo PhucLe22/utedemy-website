@@ -63,7 +63,7 @@
             </div>
             
             <div class="action-buttons">
-                <a href="/utedemyProject/teacher/addCourse" class="btn btn-primary">
+                <a href="${pageContext.request.contextPath}/teacher/addCourse" class="btn btn-primary">
                     <i class="fas fa-plus"></i> Tạo khóa học
                 </a>
             </div>
@@ -198,7 +198,7 @@
                             <i class="fas fa-book"></i>
                         </div>
                         <h3 class="no-courses-text">Bạn chưa có khóa học nào</h3>
-                        <a href="/utedemyProject/teacher/addCourse" class="btn btn-primary">
+                        <a href="${pageContext.request.contextPath}/teacher/addCourse" class="btn btn-primary">
                             <i class="fas fa-plus"></i> Tạo khóa học đầu tiên
                         </a>
                     </div>

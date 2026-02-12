@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quên mật khẩu</title>
-    <link rel="stylesheet" href="/utedemyProject/views/Css/forgotPassword.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/Css/forgotPassword.css">
 </head>
 <body>
     <div class="forgot-password-container">

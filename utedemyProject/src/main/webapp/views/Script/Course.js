@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		// Disable button để tránh người dùng nhấn lần nữa
 		btn.disabled = true;
 		
-	    fetch('/utedemyProject/views/user/Course', {
+	    fetch(window.contextPath + '/views/user/Course', {
 	      method: 'POST',
 	      headers: {
 	        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -452,7 +452,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function checkRatingRequest() {
 	const checkRating = true;
-	fetch('/utedemyProject/views/user/Course', {
+	fetch(window.contextPath + '/views/user/Course', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -471,7 +471,7 @@ function checkRatingRequest() {
 
 function checkUPERequest() {
 	const checkUPE = true;
-	fetch('/utedemyProject/views/user/Course', {
+	fetch(window.contextPath + '/views/user/Course', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -488,7 +488,7 @@ function checkUPERequest() {
 function takeAvatarURLRequest() {
 	const takeavatarURL = true;
 		  
-		  fetch('/utedemyProject/views/user/Course', {
+		  fetch(window.contextPath + '/views/user/Course', {
 		  		method: 'POST',
 		  		headers: {
 		  			'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -507,7 +507,7 @@ function takeAvatarURLRequest() {
 
 function takeProgressRequest() {
 	const takeProgress = true;
-	fetch('/utedemyProject/views/user/Course', {
+	fetch(window.contextPath + '/views/user/Course', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -524,7 +524,7 @@ function takeProgressRequest() {
 
 function sendFeedback(selectedRating, feedback)
 {
-	fetch('/utedemyProject/views/user/Course', {
+	fetch(window.contextPath + '/views/user/Course', {
 	      method: 'POST',
 	      headers: {
 	        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -542,7 +542,7 @@ function sendFeedback(selectedRating, feedback)
 let currentToast = null; 
 
 function markLessonAsCompleted(lessonId) {
-  fetch('/utedemyProject/views/user/Course', {
+  fetch(window.contextPath + '/views/user/Course', {
     method: 'POST',
     headers: {
 		'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -701,7 +701,7 @@ document.addEventListener("click", function (e) {
 	btn.appendChild(loadingSpinner);
 	btn.disabled = true;
 
-    fetch('/utedemyProject/views/user/Course', {
+    fetch(window.contextPath + '/views/user/Course', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'

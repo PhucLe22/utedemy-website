@@ -22,18 +22,18 @@ public class HomeController extends HttpServlet {
 	    String url = req.getRequestURI();
 	    req.setCharacterEncoding("UTF-8");
 	    resp.setCharacterEncoding("UTF-8");
-	    
+
 	    List<Object[]> bestSellerCourses = courseService.getBestSellingCourses(5);
-	    System.out.println("Best Seller Courses: " + bestSellerCourses); // In dữ liệu
-	    for (Object[] course : bestSellerCourses) {
-	        System.out.println("Course ID: " + course[5]); // In ID
+	    // Nếu chưa có order nào, dùng danh sách course mới nhất làm fallback
+	    if (bestSellerCourses == null || bestSellerCourses.isEmpty()) {
+	        bestSellerCourses = courseService.getLatestCourses(5);
 	    }
 	    req.setAttribute("bestSellerCourses", bestSellerCourses);
 
 	    List<Object[]> todaySaleCourses = courseService.getTodaySaleCourses(10);
-	    System.out.println("Today Sale Courses: " + todaySaleCourses); // In dữ liệu
-	    for (Object[] course : todaySaleCourses) {
-	        System.out.println("Course ID: " + course[6]); // In ID
+	    // Nếu không có voucher active hôm nay, dùng danh sách course mới nhất làm fallback (7 cột)
+	    if (todaySaleCourses == null || todaySaleCourses.isEmpty()) {
+	        todaySaleCourses = courseService.getLatestCoursesWithDiscount(10);
 	    }
 	    req.setAttribute("todaySaleCourses", todaySaleCourses);
 

@@ -32,7 +32,7 @@
 		// Hàm để xóa mã OTP trong database
 		function deleteOTPFromDatabase(email) {
 		  // Sử dụng fetch API để gọi đến API xóa OTP
-		  fetch('/utedemyProject/user/deleteOTP', {
+		  fetch(window.contextPath + '/user/deleteOTP', {
 		    method: 'POST',
 		    headers: {
 		      'Content-Type': 'application/json',
@@ -100,7 +100,7 @@
 		  errorMessage.style.display = 'block';
 		  
 		  // Gọi API để gửi lại OTP
-		  fetch('/utedemyProject/user/resendOTP', {
+		  fetch(window.contextPath + '/user/resendOTP', {
 		    method: 'POST',
 		    headers: {
 		      'Content-Type': 'application/x-www-form-urlencoded',
@@ -271,7 +271,7 @@
 		    const email = formData.get('email');
 		    
 		    // Gửi request bằng fetch API
-		    fetch('/utedemyProject/user/verifyOTP', {
+		    fetch(window.contextPath + '/user/verifyOTP', {
 		      method: 'POST',
 		      headers: {
 		        'Content-Type': 'application/x-www-form-urlencoded',

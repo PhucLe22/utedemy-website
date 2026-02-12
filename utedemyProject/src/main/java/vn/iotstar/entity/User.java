@@ -46,7 +46,7 @@ public class User implements Serializable {
 	@Column(name = "id")
 	protected int id;
 	
-	@Column(name = "fullname", columnDefinition = "NVARCHAR(200) NOT NULL")
+	@Column(name = "fullname", nullable = false, length = 200)
 	@NotEmpty(message = "Không được phép rỗng")
 	protected String fullname;
 	
@@ -65,7 +65,7 @@ public class User implements Serializable {
 	@Column(name = "address")
 	protected String address;
 	
-	@Column(name = "avatarUrl", columnDefinition = "NVARCHAR(200) NOT NULL")
+	@Column(name = "avatarUrl", nullable = false, length = 200)
 	@NotEmpty(message = "Không được phép rỗng")
 	protected String avatarUrl;
 	

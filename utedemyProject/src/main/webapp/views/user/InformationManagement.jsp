@@ -27,24 +27,24 @@
             <div class="profile-container">
                 <div class="profile-image-container">
                     <div class="profile-image" id="profileImage">
-                        <c:if test="${not empty user.avatarUrl}">
-                            <c:url value="/image?fname=${user.avatarUrl}" var="imgUrl"></c:url>
-                            <img id="previewImage" src="${imgUrl}" alt="Ảnh hồ sơ">
-                        </c:if>
-                        <c:if test="${empty user.avatarUrl}">
-                            <div class="profile-placeholder">
-                                <i class="profile-icon">👤</i>
-                            </div>
-                        </c:if>
+                        <c:url value="/image?fname=${user.avatarUrl}" var="imgUrl"/>
+                        <img id="previewImage"
+                             src="${not empty user.avatarUrl ? imgUrl : ''}"
+                             alt="Ảnh hồ sơ"
+                             style="${empty user.avatarUrl ? 'display:none' : ''}">
+                        <div class="profile-placeholder" id="placeholder"
+                             style="${not empty user.avatarUrl ? 'display:none' : ''}">
+                            <i class="profile-icon">👤</i>
+                        </div>
                     </div>
-                    <div class="upload-overlay">
+                    <label for="images1" class="upload-overlay">
                         <i class="upload-icon">📷</i>
-                    </div>
+                    </label>
                 </div>
 
                 <div class="upload-controls">
                     <label for="images1" class="custom-file-upload">
-                        <i class="upload-button-icon">📂</i> Chọn ảnh
+                        📂 Chọn ảnh
                     </label>
                     <input type="file" id="images1" name="profileImage" accept="image/*" onchange="previewFile()">
                 </div>
@@ -161,21 +161,6 @@
         
     </div>
     
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Lấy nút TRUY CẬP
-        const accessBtn = document.querySelector('.btn.btn-primary:last-child');
 
-        // Thêm sự kiện click
-        accessBtn.addEventListener('click', function() {
-            // Lấy contextPath từ JSP
-            const contextPath = "${pageContext.request.contextPath}"; // Lấy giá trị chính xác từ JSP
-            
-            // Chuyển hướng sang trang homepage.jsp
-            window.location.href = contextPath + "/user/homepage";
-        });
-    });
-</script>
-    
 </body>
 </html>
