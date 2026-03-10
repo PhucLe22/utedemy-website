@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemesh>
+	<!-- Exclude static resources from decoration -->
+	<mapping path="/views/Css/*" exclude="true" />
+	<mapping path="/views/Script/*" exclude="true" />
+	<mapping path="/views/Images/*" exclude="true" />
+	<mapping path="/views/fonts/*" exclude="true" />
+	<mapping path="*.css" exclude="true" />
+	<mapping path="*.js" exclude="true" />
+	<mapping path="*.png" exclude="true" />
+	<mapping path="*.jpg" exclude="true" />
+	<mapping path="*.jpeg" exclude="true" />
+	<mapping path="*.gif" exclude="true" />
+	<mapping path="*.svg" exclude="true" />
+	<mapping path="*.woff" exclude="true" />
+	<mapping path="*.woff2" exclude="true" />
+	<mapping path="*.ttf" exclude="true" />
+	<mapping path="*.ico" exclude="true" />
+
 	<mapping path="/teacher/addTarget" name="teacher" decorator="addCourse.jsp" />
 	<mapping path="/teacher/add" name="teacher" decorator="addCourse.jsp" />
 	<mapping path="/teacher/adBasicInformation" name="teacher" decorator="addCourse.jsp" />
