@@ -17,21 +17,23 @@ public class CartDao implements ICartDao{
 
 	@Override
 	public Cart findByUserId(int userId) {
-		
+
 		EntityManager em = JPAConfig.getEntityManager();
-		
+
 		 try {
 	            return em.createQuery("SELECT c FROM Cart c WHERE c.user.id = :userId", Cart.class)
 	                     .setParameter("userId", userId)
 	                     .getSingleResult();
 	        } catch (NoResultException e) {
 	            return null;
+	        } finally {
+	            em.close();
 	        }
 	}
 	public boolean removeAllCoursesByUserId(int userId) {
-		
+
 		EntityManager em = JPAConfig.getEntityManager();
-		
+
 	    try {
 	        em.getTransaction().begin();
 
@@ -53,12 +55,14 @@ public class CartDao implements ICartDao{
 
 	    } catch (NoResultException e) {
 	        System.out.println("Cart not found for user id: " + userId);
-	        em.getTransaction().rollback();
+	        if (em.getTransaction().isActive()) em.getTransaction().rollback();
 	        return false;
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        em.getTransaction().rollback();
+	        if (em.getTransaction().isActive()) em.getTransaction().rollback();
 	        return false;
+	    } finally {
+	        em.close();
 	    }
 	}
 	public boolean deleteSelectedCourses(Cart cart, List<Integer> selectedCourseIds) {
@@ -85,6 +89,8 @@ public class CartDao implements ICartDao{
 	        e.printStackTrace();
 	        if (trans.isActive()) trans.rollback();
 	        return false; // Lỗi
+	    } finally {
+	        em.close();
 	    }
 	}
 	public List<Course> getRandomCoursesNotInCartByUserId(int userId, int limit) {
@@ -98,7 +104,7 @@ public class CartDao implements ICartDao{
 	                      "  WHERE ca.user.id = :userId" +
 	                      ") " +
 	                      "ORDER BY FUNCTION('RAND')";
-	        
+
 	        TypedQuery<Course> query = em.createQuery(jpql, Course.class);
 	        query.setParameter("userId", userId);
 	        query.setMaxResults(limit); // Số lượng random muốn lấy
@@ -107,6 +113,8 @@ public class CartDao implements ICartDao{
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        return null; // Nếu có lỗi, trả về null
+	    } finally {
+	        em.close();
 	    }
 	}
 	@Override
@@ -163,6 +171,8 @@ public class CartDao implements ICartDao{
 	        e.printStackTrace();
 	        if (trans.isActive()) trans.rollback();
 	        return false;
+	    } finally {
+	        em.close();
 	    }
 	}
 

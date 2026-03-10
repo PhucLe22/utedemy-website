@@ -205,7 +205,7 @@ public class CourseDao implements ICourseDao {
 	        e.printStackTrace();
 	        return null;
 	    } finally {
-	       // em.close();
+	        em.close();
 	    }
 	}*/
 	@Override

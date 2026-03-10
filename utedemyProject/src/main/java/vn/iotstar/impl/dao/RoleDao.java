@@ -11,9 +11,13 @@ public class RoleDao implements IRoleDao{
 	
 	public Role findById(int id) {
 		EntityManager enma = JPAConfig.getEntityManager();
-	    TypedQuery<Role> query = enma.createQuery("SELECT r FROM Role r WHERE r.id = :id", Role.class);
-	    query.setParameter("id", id);
-	    return query.getSingleResult();
+		try {
+		    TypedQuery<Role> query = enma.createQuery("SELECT r FROM Role r WHERE r.id = :id", Role.class);
+		    query.setParameter("id", id);
+		    return query.getSingleResult();
+		} finally {
+		    enma.close();
+		}
 	}
 
 }

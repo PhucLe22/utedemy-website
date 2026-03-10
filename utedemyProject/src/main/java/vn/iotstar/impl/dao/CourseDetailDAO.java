@@ -1,8 +1,6 @@
 package vn.iotstar.impl.dao;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import vn.iotstar.dao.ICourseDetailDAO;
 import vn.iotstar.entity.Course;
 import vn.iotstar.entity.CourseDetail;
@@ -14,18 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Hibernate;
+import vn.iotstar.configs.JPAConfig;
 
 public class CourseDetailDAO implements ICourseDetailDAO {
 
-    private EntityManagerFactory emf;
-
-    public CourseDetailDAO() {
-        emf = Persistence.createEntityManagerFactory("jpa-hibernate-mysql");
-    }
-
     @Override
     public CourseDetail findById(int id) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = JPAConfig.getEntityManager();
         try {
             CourseDetail courseDetail = em.find(CourseDetail.class, id);
             if (courseDetail != null && courseDetail.getCourse() != null) {
@@ -48,7 +41,7 @@ public class CourseDetailDAO implements ICourseDetailDAO {
     }
     @Override
     public CourseDetail findByCourseId(int courseId) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = JPAConfig.getEntityManager();
         try {
             Course course = em.find(Course.class, courseId);
             if (course != null) {
@@ -56,13 +49,13 @@ public class CourseDetailDAO implements ICourseDetailDAO {
             }
             return null;
         } finally {
-         //   em.close();
+            em.close();
         }
     }
 
     @Override
 	public List<CourseProgress> getAllCourseProgress() {
-		EntityManager em = emf.createEntityManager();
+		EntityManager em = JPAConfig.getEntityManager();
 		List<CourseProgress> c = new ArrayList<>();
 		try {
 			String sql = "SELECT c FROM CourseProgress c";
@@ -78,7 +71,7 @@ public class CourseDetailDAO implements ICourseDetailDAO {
 	}
     @Override
 	public List<CourseType> getAllCourseTypes() {
-		EntityManager em = emf.createEntityManager();
+		EntityManager em = JPAConfig.getEntityManager();
 		List<CourseType> courseTypes = new ArrayList<>();
 		try {
 			// Truy vấn tất cả CourseTypes từ cơ sở dữ liệu
@@ -95,7 +88,7 @@ public class CourseDetailDAO implements ICourseDetailDAO {
 
 	@Override
 	public CourseType getCourseTypeById(int id) {
-		EntityManager em = emf.createEntityManager();
+		EntityManager em = JPAConfig.getEntityManager();
 		CourseType courseType = null;
 		try {
 			courseType = em.find(CourseType.class, id); // Lấy 1 đối tượng CourseType theo khóa chính

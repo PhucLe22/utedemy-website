@@ -41,7 +41,6 @@ public class UserDao implements IUserDao {
 	@Override
 	public boolean checkExistEmail(String email) {
 		EntityManager enma = JPAConfig.getEntityManager();
-		//EntityTransaction trans = enma.getTransaction();
 		try {
 	        TypedQuery<Long> query = enma.createQuery(
 	            "SELECT COUNT(u) FROM User u WHERE u.email = :email", Long.class);
@@ -51,12 +50,13 @@ public class UserDao implements IUserDao {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        return false;
+	    } finally {
+	        enma.close();
 	    }
 	}
 	@Override
 	public boolean checkExistPhoneNumber(String phonenumber) {
 		EntityManager enma = JPAConfig.getEntityManager();
-		//EntityTransaction trans = enma.getTransaction();
 		try {
 	        TypedQuery<Long> query = enma.createQuery(
 	            "SELECT COUNT(u) FROM User u WHERE u.phoneNumber = :phoneNumber", Long.class);
@@ -66,6 +66,8 @@ public class UserDao implements IUserDao {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        return false;
+	    } finally {
+	        enma.close();
 	    }
 	}
 
@@ -177,6 +179,8 @@ public class UserDao implements IUserDao {
 	        System.out.println("Exception occurred in getRolesByUserId: " + e.getMessage());
 	        e.printStackTrace();
 	        return new HashSet<>();
+	    } finally {
+	        em.close();
 	    }
 	}
 
@@ -308,8 +312,12 @@ public class UserDao implements IUserDao {
     @Override
 	public List<User> findAllUser() {
 		EntityManager enma = JPAConfig.getEntityManager();
-		TypedQuery<User> query = enma.createNamedQuery("User.findAll", User.class);
-		return query.getResultList();
+		try {
+			TypedQuery<User> query = enma.createNamedQuery("User.findAll", User.class);
+			return query.getResultList();
+		} finally {
+			enma.close();
+		}
 	}
     @Override
     public User findTeacherById(int userId) {
