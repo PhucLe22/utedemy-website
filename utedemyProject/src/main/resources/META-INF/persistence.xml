@@ -4,19 +4,40 @@
              version="3.0">
              
     <persistence-unit name="jpa-hibernate-mysql" transaction-type="RESOURCE_LOCAL">
+        <class>vn.iotstar.entity.Answer</class>
+        <class>vn.iotstar.entity.Cart</class>
+        <class>vn.iotstar.entity.Course</class>
+        <class>vn.iotstar.entity.CourseDetail</class>
+        <class>vn.iotstar.entity.CourseProgress</class>
+        <class>vn.iotstar.entity.CourseType</class>
+        <class>vn.iotstar.entity.Discount</class>
+        <class>vn.iotstar.entity.Discussion</class>
+        <class>vn.iotstar.entity.FavoriteCourse</class>
+        <class>vn.iotstar.entity.Lesson</class>
+        <class>vn.iotstar.entity.LessonProgress</class>
+        <class>vn.iotstar.entity.Notification</class>
+        <class>vn.iotstar.entity.OrderItem</class>
+        <class>vn.iotstar.entity.Orders</class>
+        <class>vn.iotstar.entity.Payment</class>
+        <class>vn.iotstar.entity.Question</class>
+        <class>vn.iotstar.entity.Quiz</class>
+        <class>vn.iotstar.entity.Review</class>
         <class>vn.iotstar.entity.Role</class>
+        <class>vn.iotstar.entity.Section</class>
+        <class>vn.iotstar.entity.Teacher</class>
         <class>vn.iotstar.entity.User</class>
+        <class>vn.iotstar.entity.Voucher</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:postgresql://aws-1-ap-northeast-2.pooler.supabase.com:6543/postgres?sslmode=require&amp;prepareThreshold=0"/>
-            <property name="jakarta.persistence.jdbc.user" value="postgres.fzhkxncxjjwoespivequ"/>
-            <property name="jakarta.persistence.jdbc.password" value="Phuclnt@2201"/>
+                      value="jdbc:postgresql://ep-rapid-heart-ahyfylq2-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&amp;channel_binding=require"/>
+            <property name="jakarta.persistence.jdbc.user" value="neondb_owner"/>
+            <property name="jakarta.persistence.jdbc.password" value="npg_b9hwnf4lYczU"/>
 
-            <property name="hibernate.hbm2ddl.auto" value="none"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.show_sql" value="false"/>
 
             <!-- HikariCP Connection Pool -->
             <property name="hibernate.connection.provider_class" value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>

@@ -31,7 +31,7 @@ public class OrderDao implements IOrderDao{
 	            if (trans.isActive()) trans.rollback();
 	            return false; // Lỗi
 	        } finally {
-	            //em.close();
+	            em.close();
 	        }
 	    }
 	  @Override
@@ -47,7 +47,7 @@ public class OrderDao implements IOrderDao{
 	            e.printStackTrace();
 	            return null;
 	        } finally {
-	            // em.close();
+	            em.close();
 	        }
 	    }
 	  @Override
@@ -71,7 +71,7 @@ public class OrderDao implements IOrderDao{
 	            if (trans.isActive()) trans.rollback();
 	            return false;
 	        } finally {
-	            // em.close();
+	            em.close();
 	        }
 	    }
 	  @Override
@@ -96,7 +96,7 @@ public class OrderDao implements IOrderDao{
 	            if (trans.isActive()) trans.rollback();
 	            return false;
 	        } finally {
-	            // em.close();
+	            em.close();
 	        }
 	    }
 	  @Override
@@ -121,7 +121,7 @@ public class OrderDao implements IOrderDao{
 	          if (trans.isActive()) trans.rollback();
 	          return false;
 	      } finally {
-	          // em.close();
+	          em.close();
 	      }
 	  }
 	  @Override
@@ -159,7 +159,7 @@ public class OrderDao implements IOrderDao{
 	          if (trans.isActive()) trans.rollback();
 	          return false;
 	      } finally {
-	          // em.close();
+	          em.close();
 	      }
 	  }
 	  @Override
@@ -188,7 +188,7 @@ public class OrderDao implements IOrderDao{
 	          if (trans.isActive()) trans.rollback();
 	          return false;
 	      } finally {
-	          // em.close();
+	          em.close();
 	      }
 	  }
 	  @Override
@@ -201,6 +201,8 @@ public class OrderDao implements IOrderDao{
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            return null;
+	        } finally {
+	            em.close();
 	        }
 	    }
 	  @Override

@@ -21,6 +21,8 @@ public class FavoriteCourseDao implements IFavoriteCourseDao {
                     .getSingleResult();
         } catch (NoResultException e) {
             return null;
+        } finally {
+            em.close();
         }
 	}
 

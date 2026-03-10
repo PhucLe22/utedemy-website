@@ -15,10 +15,14 @@ public class NotificationDao implements INotificationDao {
 	public List<Notification> findByIdUser(int id) {
 
 	    EntityManager enma = JPAConfig.getEntityManager();
-	    String jpql = "SELECT n FROM Notification n WHERE n.receiver.id = :UserId";
-	    TypedQuery<Notification> query = enma.createQuery(jpql, Notification.class);
-	    query.setParameter("UserId", id);
-	    return query.getResultList();
+	    try {
+	        String jpql = "SELECT n FROM Notification n WHERE n.receiver.id = :UserId";
+	        TypedQuery<Notification> query = enma.createQuery(jpql, Notification.class);
+	        query.setParameter("UserId", id);
+	        return query.getResultList();
+	    } finally {
+	        enma.close();
+	    }
 	}
 
 	@Override

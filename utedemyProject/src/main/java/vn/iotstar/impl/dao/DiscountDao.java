@@ -11,11 +11,10 @@ import vn.iotstar.dao.IDiscountDao;
 import vn.iotstar.entity.Discount;
 
 public class DiscountDao implements IDiscountDao{
-	
-	EntityManager em = JPAConfig.getEntityManager();
-	
+
 	@Override
 	 public Discount findByDisCode(String disCode) {
+	        EntityManager em = JPAConfig.getEntityManager();
 	        try {
 	            String jpql = "SELECT d FROM Discount d WHERE d.disCode = :disCode";
 	            TypedQuery<Discount> query = em.createQuery(jpql, Discount.class);
@@ -23,6 +22,8 @@ public class DiscountDao implements IDiscountDao{
 	            return query.getSingleResult();
 	        } catch (NoResultException e) {
 	            return null;
+	        } finally {
+	            em.close();
 	        }
 	    }
 	  // check còn lượt sử dụng
@@ -76,6 +77,8 @@ public class DiscountDao implements IDiscountDao{
 	            e.printStackTrace();
 	            if (trans.isActive()) trans.rollback();
 	            return false;
+	        } finally {
+	            em.close();
 	        }
 	    }
 
@@ -98,6 +101,8 @@ public class DiscountDao implements IDiscountDao{
 	            e.printStackTrace();
 	            if (trans.isActive()) trans.rollback();
 	            return false;
+	        } finally {
+	            em.close();
 	        }
 	    }
 	    @Override
@@ -136,6 +141,8 @@ public class DiscountDao implements IDiscountDao{
 	            e.printStackTrace();
 	            if (trans.isActive()) trans.rollback();
 	            return false;
+	        } finally {
+	            em.close();
 	        }
 	    }
 
@@ -177,6 +184,8 @@ public class DiscountDao implements IDiscountDao{
 	            e.printStackTrace();
 	            if (trans.isActive()) trans.rollback();
 	            return false;
+	        } finally {
+	            em.close();
 	        }
 	    }
 
@@ -197,9 +206,11 @@ public class DiscountDao implements IDiscountDao{
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            return null;
+	        } finally {
+	            em.close();
 	        }
 	    }
-	    
+
 	    @Override
 	    public String getCodeAmountByDisCode(String disCode) {
 	        EntityManager em = JPAConfig.getEntityManager();
@@ -214,10 +225,12 @@ public class DiscountDao implements IDiscountDao{
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            return null;
+	        } finally {
+	            em.close();
 	        }
 	    }
 
-	    
+
 	    @Override
 	    public boolean updateCodeAmountByDiscountId(int discountId, String newCodeAmount) {
 	        EntityManager em = JPAConfig.getEntityManager();
@@ -239,9 +252,11 @@ public class DiscountDao implements IDiscountDao{
 	            e.printStackTrace();
 	            if (trans.isActive()) trans.rollback();
 	            return false;
+	        } finally {
+	            em.close();
 	        }
 	    }
-	    
+
 	    @Override
 	    public int countUsersByDiscountId(int discountId) {
 	        EntityManager em = JPAConfig.getEntityManager();
@@ -255,7 +270,7 @@ public class DiscountDao implements IDiscountDao{
 	            e.printStackTrace();
 	            return 0;
 	        } finally {
-	            // em.close();
+	            em.close();
 	        }
 	    }
 	    @Override
@@ -276,7 +291,7 @@ public class DiscountDao implements IDiscountDao{
 	            if (trans.isActive()) trans.rollback();
 	            return false;
 	        } finally {
-	            // em.close();
+	            em.close();
 	        }
 	    }
 	    @Override
@@ -364,7 +379,7 @@ public class DiscountDao implements IDiscountDao{
 	            e.printStackTrace();
 	            return false;
 	        } finally {
-	            //em.close();
+	            em.close();
 	        }
 	    }
 
