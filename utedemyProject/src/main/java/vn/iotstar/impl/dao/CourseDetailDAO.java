@@ -45,6 +45,11 @@ public class CourseDetailDAO implements ICourseDetailDAO {
         try {
             Course course = em.find(Course.class, courseId);
             if (course != null) {
+                // Initialize lazy collections while session is open
+                course.getReview().size();
+                if (course.getTeacher() != null) {
+                    course.getTeacher().getFullname();
+                }
                 return course.getCourseDetail();
             }
             return null;
