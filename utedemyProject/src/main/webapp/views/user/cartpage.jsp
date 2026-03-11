@@ -142,7 +142,7 @@
                     <div class="empty-cart">
                         <p>Giỏ hàng của bạn đang trống</p>
                         <i class="fas fa-shopping-cart empty-cart-icon"></i>
-                        <a href="${pageContext.request.contextPath}/home" class="continue-shopping-btn">Tiếp tục mua sắm</a>
+                        <a href="${pageContext.request.contextPath}/user/homepage" class="continue-shopping-btn">Tiếp tục mua sắm</a>
                     </div>
                 </c:otherwise>
             </c:choose>
